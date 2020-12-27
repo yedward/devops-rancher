@@ -6,6 +6,7 @@ package devops;
 class Rancher {
     def deploy() {
         println("发布成功")
+        echo "echo 发布成功"
     }
 }
 
