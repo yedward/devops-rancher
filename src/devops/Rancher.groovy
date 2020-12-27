@@ -4,8 +4,8 @@ def name = "zhangsan"
 def age = 25
 
 def deploy() {
-    println("发布成功 $name")
-    System.out.println("system 发布成功 $age")
+    println("发布成功 ${name}")
+    System.out.println("system 发布成功 ${age}")
 }
 
 def testHttpRequest(param1) {
