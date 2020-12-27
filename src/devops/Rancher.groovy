@@ -1,6 +1,11 @@
 package devops;
 
-def deploy = {
-    println("发布成功！")
+/**
+ * Rancher Tools
+ */
+class Rancher {
+    def deploy() {
+        println("发布成功")
+    }
 }
 
