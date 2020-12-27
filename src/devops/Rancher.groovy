@@ -4,8 +4,13 @@ class Rancher {
     def name = "zhangsan"
     def age = 25
 
+    def echoprint = { it ->
+        echo ${it}
+    }
+
     def deploy() {
         println("发布成功 ${name}")
+        echoprint "发布成功 ${name}"
         System.out.println("system 发布成功 ${age}")
     }
 
