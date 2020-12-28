@@ -34,19 +34,19 @@ def ls() {
 def add(String apiServerUrl, String apiToken, String projectId, String name, String url, String branch, String username, String password) {
     println("Add a catalog")
     Utils helper = new Utils()
-    String requestBody = '''
+    String requestBody = """
      {
      "type": "projectcatalog",
      "kind": "helm",
-     "branch": "master",
-     "projectId": "c-92nlp:p-jr7r6",
+     "branch": "${branch}",
+     "projectId": "${projectId}",
      "helmVersion": "helm_v3",
-     "name": "testprrrr",
-     "url": "https://github.com/yedeard/1.git",
-     "username": "admina",
-     "password": "adminaaa"
+     "name": "${name}",
+     "url": "${url}",
+     "username": "${username}",
+     "password": "${password}"
      }
-    '''
+"""
     helper.handleRequest("${apiServerUrl}/projectcatalog", "${apiToken}", "POST", "${requestBody}")
 }
 

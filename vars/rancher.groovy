@@ -21,7 +21,6 @@ def deployApp(params) {
 //            requestBody: "",
 //            url: "https://rancher.yedward.net/v3"
     println("deploy app from url:${url} to namespace:${namespace} success.")
-    println(result.toString())
 }
 
 // project_id
