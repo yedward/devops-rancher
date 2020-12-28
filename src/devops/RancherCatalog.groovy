@@ -38,13 +38,13 @@ def add(String apiServerUrl, String apiToken, String projectId, String name, Str
      {
      "type": "projectcatalog",
      "kind": "helm",
-     "branch": "${branch}",
-     "projectId": "${projectId}",
+     "branch": "master",
+     "projectId": "c-92nlp:p-jr7r6",
      "helmVersion": "helm_v3",
-     "name": "${name}",
-     "url": "${url}",
-     "username": "${username}",
-     "password": "${password}"
+     "name": "testprrrr",
+     "url": "https://github.com/yedeard/1.git",
+     "username": "admina",
+     "password": "adminaaa"
      }
     '''
     helper.handleRequest("${apiServerUrl}/projectcatalog", "${apiToken}", "POST", "${requestBody}")
