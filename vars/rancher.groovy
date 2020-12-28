@@ -1,8 +1,8 @@
 import devops.HttpRequestHelper
 import devops.Utils
 
-def API_SERVER_URL = "https://rancher.yedward.net/v3"
-def API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"
+API_SERVER_URL = "https://rancher.yedward.net/v3"
+API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"
 
 def deployApp(params) {
     def url = params["url"]
