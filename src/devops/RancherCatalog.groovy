@@ -32,7 +32,7 @@ def ls() {
 // project_catalog_username
 // project_catalog_password
 def add(String apiServerUrl, String apiToken, String projectId, String name, String url, String branch, String username, String password) {
-    println("Add a catalog")
+    println("---------------【添加Git仓库地址到应用商店】开始--------------")
     Utils helper = new Utils()
     String requestBody = """
      {
@@ -48,6 +48,7 @@ def add(String apiServerUrl, String apiToken, String projectId, String name, Str
      }
 """
     helper.handleRequest("${apiServerUrl}/projectcatalog", "${apiToken}", "POST", "${requestBody}")
+    println("---------------【添加Git仓库地址到应用商店】结束--------------")
 }
 
 /**
