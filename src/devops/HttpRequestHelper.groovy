@@ -13,9 +13,9 @@ static def handleRequest(String apiServerUrl, String apiToken, String httpMode, 
     httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer ${apiToken}"],
                                          [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                          [maskValue: false, name: 'Accept', value: 'application/json']],
-            httpMode: ${httpMode},
+            httpMode: "${httpMode}",
             consoleLogResponseBody: true,
             ignoreSslErrors: true,
-            requestBody: ${requestBody},
-            url: ${apiServerUrl}
+            requestBody: "${requestBody}",
+            url: "${apiServerUrl}"
 }
