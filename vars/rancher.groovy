@@ -7,8 +7,8 @@ def deployApp(params) {
     def API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"
     def url = params["url"]
     def namespace = params["namespace"]
-    Utils helper = new Utils()
-    result = helper.handleRequest("https://rancher.yedward.net/v3", "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6", "POST", "")
+//    Utils helper = new Utils()
+//    result = helper.handleRequest("https://rancher.yedward.net/v3", "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6", "POST", "")
     RancherCatalog catalog = new RancherCatalog()
     catalog.add("https://rancher.yedward.net/v3", "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6","c-92nlp:p-jr7r6","testtestaaa","http://sdfsdf.github.com/sdfsd.git","master", "adminaa", "sdfsdfsdf")
 

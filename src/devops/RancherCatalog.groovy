@@ -47,7 +47,7 @@ def add(String apiServerUrl, String apiToken, String projectId, String name, Str
      "password": "${password}"
      }
     '''
-    helper.handleRequest("${apiServerUrl}", "${apiToken}", "POST", "${requestBody}")
+    helper.handleRequest("${apiServerUrl}/projectcatalog", "${apiToken}", "POST", "${requestBody}")
 }
 
 /**
