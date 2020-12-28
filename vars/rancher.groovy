@@ -1,3 +1,5 @@
+import devops.RancherApps
+import devops.RancherCatalog
 import devops.Utils
 
 def deployApp(params) {
@@ -7,6 +9,9 @@ def deployApp(params) {
     def namespace = params["namespace"]
     Utils helper = new Utils()
     result = helper.handleRequest("https://rancher.yedward.net/v3", "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6", "POST", "")
+    RancherCatalog catalog = new RancherCatalog()
+    catalog.add("https://rancher.yedward.net/v3", "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6","c-92nlp:p-jr7r6","testtestaaa","http://sdfsdf.github.com/sdfsd.git","master", "adminaa", "sdfsdfsdf")
+
 //    result = httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
 //                                         [maskValue: false, name: 'Content-Type', value: 'application/json'],
 //                                         [maskValue: false, name: 'Accept', value: 'application/json']],
