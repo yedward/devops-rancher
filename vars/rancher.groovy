@@ -7,7 +7,7 @@ def API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxm
 def deployApp(params) {
     def url = params["url"]
     def namespace = params["namespace"]
-    HttpRequestHelper.handleRequest(${API_SERVER_URL}, ${API_TOKEN}, "POST", "")
+    HttpRequestHelper.handleRequest("${API_SERVER_URL}", "${API_TOKEN}", "POST", "")
 //    result = httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
 //                                         [maskValue: false, name: 'Content-Type', value: 'application/json'],
 //                                         [maskValue: false, name: 'Accept', value: 'application/json']],
