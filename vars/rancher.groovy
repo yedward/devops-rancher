@@ -1,20 +1,21 @@
+import devops.HttpRequestHelper
 import devops.Utils
 
-def API_SERVER_URL = "XXXXXXXXX"
-def API_TOKEN = "XXXXXXXX"
+def API_SERVER_URL = "https://rancher.yedward.net/v3"
+def API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"
 
 def deployApp(params) {
-    Utils.parse()
     def url = params["url"]
     def namespace = params["namespace"]
-    result = httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
-                                         [maskValue: false, name: 'Content-Type', value: 'application/json'],
-                                         [maskValue: false, name: 'Accept', value: 'application/json']],
-            httpMode: "POST",
-            consoleLogResponseBody: true,
-            ignoreSslErrors: true,
-            requestBody: "",
-            url: "https://rancher.yedward.net/v3"
+    HttpRequestHelper.handleRequest(${API_SERVER_URL}, ${API_TOKEN}, "POST", "")
+//    result = httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
+//                                         [maskValue: false, name: 'Content-Type', value: 'application/json'],
+//                                         [maskValue: false, name: 'Accept', value: 'application/json']],
+//            httpMode: "POST",
+//            consoleLogResponseBody: true,
+//            ignoreSslErrors: true,
+//            requestBody: "",
+//            url: "https://rancher.yedward.net/v3"
     println("deploy app from url:${url} to namespace:${namespace} success.")
     println(result.toString())
 }

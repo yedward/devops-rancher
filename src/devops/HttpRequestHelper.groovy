@@ -1,17 +1,21 @@
 package devops
 
-def api_token = "SKFJLSDJFKDSJFLKDSFJLDKSFJLDSFKDSLFJ"
-
 /**
- * HTTP GET请求
+ * HTTP请求工具
+ *
+ * @param apiServerUrl
+ * @param apiToken
+ * @param httpMode
+ * @param requestBody
+ * @return
  */
-static def httpGet() {
-    println("httpGet ${api_token}")
-}
-
-/**
- * HTTP POST请求
- */
-static def httpPost() {
-    println("httpPost")
+static def handleRequest(apiServerUrl, apiToken, httpMode, requestBody) {
+    httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer ${apiToken}"],
+                                         [maskValue: false, name: 'Content-Type', value: 'application/json'],
+                                         [maskValue: false, name: 'Accept', value: 'application/json']],
+            httpMode: ${httpMode},
+            consoleLogResponseBody: true,
+            ignoreSslErrors: true,
+            requestBody: ${requestBody},
+            url: ${apiServerUrl}
 }
