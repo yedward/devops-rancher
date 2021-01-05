@@ -73,6 +73,8 @@ def add(String projectId, String name, String url, String branch, String usernam
     try {
         response = application.handleRequest("POST","projectcatalog", "${requestBody}")
     } catch (Exception e) {
+        println(response.status)
+        println(response.content)
         e.printStackTrace()
     } finally {
         println(response.status)
