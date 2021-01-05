@@ -22,37 +22,6 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             ignoreSslErrors: true,
             requestBody: "${requestBody}",
             url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
-
-//    withCredentials([usernamePassword(credentialsId: 'rancher-server-api', passwordVariable: 'TEST_API_TOKEN', usernameVariable: 'TEST_API_SERVER_URL')]) {
-////        sh('curl -H "Accept: application/json" -H "Authorization: Bearer $TEST_API_TOKEN $TEST_API_SERVER_URL')
-////        sh('curl -H \'Accept: application/json\' -H \'Content-Type: application/json\' -H \'Authorization: Bearer $TEST_API_TOKEN\' \'$TEST_API_SERVER_URL\'')
-////        sh("curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TEST_API_TOKEN}' --data ${requestBody} ${TEST_API_SERVER_URL}")
-//
-//        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
-//                                    [maskValue: false, name: 'Content-Type', value: 'application/json'],
-//                                    [maskValue: false, name: 'Accept', value: 'application/json']],
-//                httpMode: "${httpMode}",
-//                consoleLogResponseBody: true,
-//                ignoreSslErrors: true,
-//                requestBody: "${requestBody}",
-//                url: "https://rancher.yedward.net/v3${httpUrl}"
-////        script {
-////            def rancherApiInfo = ["API_SERVER_URL":API_SERVER_URL, "API_TOKEN":API_TOKEN]
-////            def applicationInfo = [
-////                    "PROJECT_ID":"c-92nlp:p-jr7r6",
-////                    "CATALOG_NAME":"testtestaaa",
-////                    "CATALOG_GIT_URL":"http://sdfsdf.github.com/sdfsd.git",
-////                    "CATALOG_GIT_BRANCH":"master",
-////                    "CATALOG_GIT_USERNAME":"admin",
-////                    "CATALOG_GIT_PASSWORD":"password"
-////            ]
-////            def params = ["RANCHER_API_INFO":rancherApiInfo,"APPLICATION_INFO":applicationInfo]
-////            echo "开始"
-////            rancher.deployApp(params)
-////            // rancher.deployApp([url:"https://github.com/yedward/app.git", namespace:"default"])
-////            echo "结束"
-////        }
-//    }
 }
 
 /**
