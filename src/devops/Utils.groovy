@@ -9,6 +9,7 @@ package devops
  * @param requestBody
  * @return
  */
+
 def handleRequest(String httpMode, String httpUrl, String requestBody) {
     httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer ${Config.API_TOKEN}"],
                                 [maskValue: false, name: 'Content-Type', value: 'application/json'],
