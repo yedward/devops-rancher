@@ -30,8 +30,10 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
 def initParseParams(Map params) {
     // 解析Rancher相关配置
     Map rancherApiInfo = params.get("RANCHER_API_INFO")
-    ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = rancherApiInfo.get("API_SERVER_URL")
-    ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = rancherApiInfo.get("API_TOKEN")
+//    ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = rancherApiInfo.get("API_SERVER_URL")
+    ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = "https://rancher.yedward.net/v3"
+//    ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = rancherApiInfo.get("API_TOKEN")
+    ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"
 
     // 解析应用相关配置
     Map applicationInfo = params.get("APPLICATION_INFO")
