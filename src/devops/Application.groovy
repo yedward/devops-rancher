@@ -1,6 +1,6 @@
 package devops
 
-import sun.security.krb5.Config
+import org.codehaus.groovy.util.StringUtil
 
 import javax.security.auth.login.AppConfigurationEntry
 
@@ -36,7 +36,9 @@ def initParseParams(Map params) {
 
     // 解析应用相关配置
     Map applicationInfo = params.get("APPLICATION_INFO")
-    ApplicationConfig.APPLICATION_INFO.PROJECT_ID = applicationInfo.get("PROJECT_ID")
+    String[] strArray = applicationInfo.get("PROJECT_ID").split(":")
+    ApplicationConfig.APPLICATION_INFO.CLUSTER_ID = strArray[0]
+    ApplicationConfig.APPLICATION_INFO.PROJECT_ID = strArray[1]
     ApplicationConfig.APPLICATION_INFO.RELEASE_NAME = applicationInfo.get("RELEASE_NAME")
     ApplicationConfig.APPLICATION_INFO.NAMESPACE_NAME = applicationInfo.get("NAMESPACE_NAME")
 
@@ -56,10 +58,13 @@ def initParseParams(Map params) {
 def deploy(Map params) {
     // 第一步，初始化发布配置
     initParseParams(params)
-    // 第二步，添加chart地址到应用仓库中
+
     RancherCatalog rancherCatalog = new RancherCatalog()
+    // 第二步，判断chart地址是否已经添加到应用仓库
+    rancherCatalog.find(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
+    // 第二步，如果还没有添加，则添加chart地址到应用仓库中
     rancherCatalog.add(
-            ApplicationConfig.APPLICATION_INFO.PROJECT_ID,
+            new StringBuilder().append(ApplicationConfig.APPLICATION_INFO.CLUSTER_ID,":",ApplicationConfig.APPLICATION_INFO.PROJECT_ID),
             ApplicationConfig.APPLICATION_INFO.CATALOG_NAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_URL,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_BRANCH,

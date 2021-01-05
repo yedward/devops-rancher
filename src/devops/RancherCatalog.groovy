@@ -8,7 +8,27 @@ def ls() {
 }
 
 /**
- * Add a catalog
+ * 根据应用商店名称查询商店信息，可用于判断商店是否已经添加
+ *
+ * @param name
+ *
+ * 示例：
+ * 查询商店：
+ * url：https://rancher_api_url/v3/projectCatalogs/your_project_id:your_name
+ * method:GET
+ *
+ */
+def find(String projectId, String name) {
+    println("---------------【查找应用商店】开始--------------")
+    Application application = new Application()
+    def response =  application.handleRequest("GET","projectCatalogs/${projectId}:${name}", null)
+    println("---------------【查找应用商店】开始--------------")
+}
+
+/**
+ * 添加一个应用商店
+ *
+ * 示例：
  *  添加商店：
  *  url: https://rancher_api_url/v3/projectcatalog
  *  method:POST
@@ -17,7 +37,7 @@ def ls() {
  *  "type": "projectcatalog",
  *  "kind": "helm",
  *  "branch": "your_branch",
- *  "projectId": "your_project_id",
+ *  "projectId": "your_full_project_id",
  *  "helmVersion": "helm_v3",
  *  "name": "your_catalog_name",
  *  "url": "https://github.com/xxxx/xxxx.git",
