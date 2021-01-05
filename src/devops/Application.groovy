@@ -57,8 +57,6 @@ def deploy(Map params) {
     initParseParams(params)
 
     RancherCatalog rancherCatalog = new RancherCatalog()
-    // 第二步，判断chart地址是否已经添加到应用仓库
-    rancherCatalog.isExist(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第二步，如果还没有添加，则添加chart地址到应用仓库中
     rancherCatalog.add(
             ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
