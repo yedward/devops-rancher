@@ -22,7 +22,8 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
 //            url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
 
     withCredentials([usernamePassword(credentialsId: 'rancher-server-api', passwordVariable: 'TEST_API_TOKEN', usernameVariable: 'TEST_API_SERVER_URL')]) {
-        sh('curl -u $TEST_API_TOKEN $TEST_API_SERVER_URL')
+//        sh('curl -H "Accept: application/json" -H "Authorization: Bearer $TEST_API_TOKEN $TEST_API_SERVER_URL')
+        sh("curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TEST_API_TOKEN}' --data ${requestBody} ${TEST_API_SERVER_URL}")
 
 //        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: 'Bearer ${TEST_API_TOKEN}'],
 //                                    [maskValue: false, name: 'Content-Type', value: 'application/json'],
