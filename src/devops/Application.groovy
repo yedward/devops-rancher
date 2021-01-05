@@ -9,6 +9,7 @@ package devops
  * @return
  */
 def handleRequest(String httpMode, String httpUrl, String requestBody) {
+    //TODO 需要排查一下，为什么response是null
     def response = httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
                                 [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                 [maskValue: false, name: 'Accept', value: 'application/json']],
@@ -17,6 +18,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             ignoreSslErrors: true,
             requestBody: "${requestBody}",
             url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
+    println("reponse:" + response)
     return response
 }
 
