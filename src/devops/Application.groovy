@@ -28,8 +28,8 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
 //        sh('curl -H \'Accept: application/json\' -H \'Content-Type: application/json\' -H \'Authorization: Bearer $TEST_API_TOKEN\' \'$TEST_API_SERVER_URL\'')
 //        sh("curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TEST_API_TOKEN}' --data ${requestBody} ${TEST_API_SERVER_URL}")
 
-        ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = '$TEST_API_SERVER_URL'
-        ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = '$TEST_API_TOKEN'
+        ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = TEST_API_SERVER_URL
+        ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = TEST_API_TOKEN
 
         println(ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL)
         println(ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN)
