@@ -19,11 +19,16 @@ def ls() {
  *
  */
 def isExist(String projectId, String name) {
-    println("---------------【查找应用商店】开始--------------")
-    Application application = new Application()
-    def response =  application.handleRequest("GET","projectCatalogs/${projectId}:${name}", null)
-    println("---------------【查找应用商店】开始--------------")
-    println(response)
+    def response
+    try {
+        println("---------------【查找应用商店】开始--------------")
+        Application application = new Application()
+        response =  application.handleRequest("GET","projectCatalogs/${projectId}:${name}", null)
+        println("---------------【查找应用商店】开始--------------")
+    } catch(Exception e) {
+        e.printStackTrace()
+        println(response)
+    }
 }
 
 /**
