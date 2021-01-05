@@ -28,7 +28,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
 //        sh('curl -H \'Accept: application/json\' -H \'Content-Type: application/json\' -H \'Authorization: Bearer $TEST_API_TOKEN\' \'$TEST_API_SERVER_URL\'')
 //        sh("curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TEST_API_TOKEN}' --data ${requestBody} ${TEST_API_SERVER_URL}")
 
-        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
+        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
                                     [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                     [maskValue: false, name: 'Accept', value: 'application/json']],
                 httpMode: "${httpMode}",
