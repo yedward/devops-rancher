@@ -9,10 +9,10 @@ import devops.Utils
  * @return
  */
 def deployApp(params) {
-    def api_info = ["API_SERVER_URL":"https://rancher.yedward.net/v3", "API_TOKEN":"token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"]
-    def testparams = [:]
-    testparams.put("api_info", api_info)
-    println(testparams.toString())
+//    def api_info = ["API_SERVER_URL":"https://rancher.yedward.net/v3", "API_TOKEN":"token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"]
+//    def testparams = [:]
+//    testparams.put("api_info", api_info)
+    println(params.toString())
 //    def url = params["url"]
 //    def namespace = params["namespace"]
 //    RancherCatalog catalog = new RancherCatalog()
