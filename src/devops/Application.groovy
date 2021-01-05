@@ -62,9 +62,8 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
  */
 def initParseParams(Map params) {
     // 解析Rancher相关配置
-    Map rancherApiInfo = params.get("RANCHER_API_INFO")
-    ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = rancherApiInfo.get("API_SERVER_URL")
-    ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = rancherApiInfo.get("API_TOKEN")
+    ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = params.get("RANCHER_API_URL")
+    ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = params.get("RANCHER_API_TOKEN")
 
     // 解析应用相关配置
     Map applicationInfo = params.get("APPLICATION_INFO")
