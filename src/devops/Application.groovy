@@ -9,7 +9,7 @@ package devops
  * @return
  */
 def handleRequest(String httpMode, String httpUrl, String requestBody) {
-    httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
+    def response = httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
                                 [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                 [maskValue: false, name: 'Accept', value: 'application/json']],
             httpMode: "${httpMode}",
@@ -17,6 +17,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             ignoreSslErrors: true,
             requestBody: "${requestBody}",
             url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
+    return response
 }
 
 /**
