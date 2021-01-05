@@ -18,7 +18,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             ignoreSslErrors: true,
             requestBody: "${requestBody}",
             url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
-    println("reponse:" + response)
+    println("reponse::" + response)
     return response
 }
 
