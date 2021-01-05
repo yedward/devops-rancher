@@ -18,11 +18,12 @@ def ls() {
  * method:GET
  *
  */
-def find(String projectId, String name) {
+def isExist(String projectId, String name) {
     println("---------------【查找应用商店】开始--------------")
     Application application = new Application()
     def response =  application.handleRequest("GET","projectCatalogs/${projectId}:${name}", null)
     println("---------------【查找应用商店】开始--------------")
+    println(response)
 }
 
 /**

@@ -1,9 +1,4 @@
 package devops
-
-import org.codehaus.groovy.util.StringUtil
-
-import javax.security.auth.login.AppConfigurationEntry
-
 /**
  * 通用HTTP请求工具
  *
@@ -61,7 +56,7 @@ def deploy(Map params) {
 
     RancherCatalog rancherCatalog = new RancherCatalog()
     // 第二步，判断chart地址是否已经添加到应用仓库
-    rancherCatalog.find(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
+    rancherCatalog.isExist(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第二步，如果还没有添加，则添加chart地址到应用仓库中
     rancherCatalog.add(
             new StringBuilder().append(ApplicationConfig.APPLICATION_INFO.CLUSTER_ID,":",ApplicationConfig.APPLICATION_INFO.PROJECT_ID),
