@@ -10,24 +10,24 @@ def ls() {
 /**
  * Add a catalog
  *  添加商店：
- *  url: https://rancher_url/v3/projectcatalog
+ *  url: https://rancher_api_url/v3/projectcatalog
  *  method:POST
  *  request payload：
  *  {
  *  "type": "projectcatalog",
  *  "kind": "helm",
- *  "branch": "master",
- *  "projectId": "c-92nlp:p-jr7r6",
+ *  "branch": "your_branch",
+ *  "projectId": "your_project_id",
  *  "helmVersion": "helm_v3",
- *  "name": "testcharts",
- *  "url": "https://github.com/yedward/testcharts.git",
- *  "username": "admin",
- *  "password": "admin888"
+ *  "name": "your_catalog_name",
+ *  "url": "https://github.com/xxxx/xxxx.git",
+ *  "username": "your_username",
+ *  "password": "your_password"
  *  }
  */
 def add(String projectId, String name, String url, String branch, String username, String password) {
     println("---------------【添加Git仓库地址到应用商店】开始--------------")
-    Utils helper = new Utils()
+    Application application = new Application()
     String requestBody = """
      {
      "type": "projectcatalog",
@@ -41,7 +41,7 @@ def add(String projectId, String name, String url, String branch, String usernam
      "password": "${password}"
      }
 """
-    helper.handleRequest("POST","projectcatalog", "${requestBody}")
+    application.handleRequest("POST","projectcatalog", "${requestBody}")
     println("---------------【添加Git仓库地址到应用商店】结束--------------")
 }
 

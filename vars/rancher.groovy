@@ -1,19 +1,15 @@
-import devops.Config
-import devops.RancherApps
-import devops.RancherCatalog
-import devops.Utils
+import devops.Application
 
 /**
  * 部署应用
+ *
  * @param params
  * @return
  */
 def deployApp(Map params) {
     println("params参数：${params.toString()}")
-    Map rancherApiInfo = params.get("rancher_api_info")
-    Config.API_SERVER_URL = rancherApiInfo.get("API_SERVER_URL")
-    Config.API_TOKEN = rancherApiInfo.get("API_TOKEN")
-    println("解析后：${Config.API_SERVER_URL}, ${Config.API_TOKEN}")
+    Application application = new Application()
+    application.deploy(params)
 //    def url = params["url"]
 //    def namespace = params["namespace"]
 //    RancherCatalog catalog = new RancherCatalog()
