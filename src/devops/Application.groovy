@@ -16,6 +16,8 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             httpMode: "${httpMode}",
             consoleLogResponseBody: true,
             ignoreSslErrors: true,
+            validResponseCodes: "100:599",
+            quiet: false,
             requestBody: "${requestBody}",
             url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
     println("reponse::" + response)
