@@ -62,6 +62,7 @@ def deploy(Map params) {
 
     RancherCatalog rancherCatalog = new RancherCatalog()
     def resp
+    String status
     // 第二步，如果还没有添加，则添加chart地址到应用仓库中
     resp = rancherCatalog.add(
             ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
@@ -71,7 +72,8 @@ def deploy(Map params) {
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_USERNAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_PASSWORD
     )
-    if (resp.status == "409") {
+    status = resp.status
+    if (status.equals("409")) {
         println("chart已经存在于应用商店中，无需再次添加")
     }
     // 第三步，刷新应用仓库，以便获取最新的chart
