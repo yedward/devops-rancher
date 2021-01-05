@@ -34,14 +34,14 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
         println(ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL)
         println(ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN)
 
-//        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: 'Bearer ${TEST_API_TOKEN}'],
-//                                    [maskValue: false, name: 'Content-Type', value: 'application/json'],
-//                                    [maskValue: false, name: 'Accept', value: 'application/json']],
-//                httpMode: "${httpMode}",
-//                consoleLogResponseBody: true,
-//                ignoreSslErrors: true,
-//                requestBody: "${requestBody}",
-//                url: TEST_API_SERVER_URL
+        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
+                                    [maskValue: false, name: 'Content-Type', value: 'application/json'],
+                                    [maskValue: false, name: 'Accept', value: 'application/json']],
+                httpMode: "${httpMode}",
+                consoleLogResponseBody: true,
+                ignoreSslErrors: true,
+                requestBody: "${requestBody}",
+                url: ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL
 //        script {
 //            def rancherApiInfo = ["API_SERVER_URL":API_SERVER_URL, "API_TOKEN":API_TOKEN]
 //            def applicationInfo = [
