@@ -41,7 +41,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
                 consoleLogResponseBody: true,
                 ignoreSslErrors: true,
                 requestBody: "${requestBody}",
-                url: ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL
+                url: "https://rancher.yedward.net/v3${httpUrl}"
 //        script {
 //            def rancherApiInfo = ["API_SERVER_URL":API_SERVER_URL, "API_TOKEN":API_TOKEN]
 //            def applicationInfo = [
