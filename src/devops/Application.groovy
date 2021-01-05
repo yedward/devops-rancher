@@ -29,7 +29,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
                 consoleLogResponseBody: true,
                 ignoreSslErrors: true,
                 requestBody: "${requestBody}",
-                url: '$API_SERVER_URL'+httpUrl
+                url: "${API_SERVER_URL}"
 //        script {
 //            def rancherApiInfo = ["API_SERVER_URL":API_SERVER_URL, "API_TOKEN":API_TOKEN]
 //            def applicationInfo = [
