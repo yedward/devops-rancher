@@ -12,7 +12,7 @@ import javax.security.auth.login.AppConfigurationEntry
  * @return
  */
 def handleRequest(String httpMode, String httpUrl, String requestBody) {
-    httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
+    httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
                                 [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                 [maskValue: false, name: 'Accept', value: 'application/json']],
             httpMode: "${httpMode}",
