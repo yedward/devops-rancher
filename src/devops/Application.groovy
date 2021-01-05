@@ -77,8 +77,9 @@ def deploy(Map params) {
         println("chart已经存在于应用商店中，无需再次添加")
     }
     // 第三步，刷新应用仓库，以便获取最新的chart
-    rancherCatalog.refresh()
+    rancherCatalog.refresh(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第四步，发布或者更新应用
+    //TODO
     RancherApps rancherApps = new RancherApps()
     rancherApps.install()
 }

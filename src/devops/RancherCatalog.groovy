@@ -75,8 +75,18 @@ def delete() {
 }
 
 /**
- * Refresh catalog templates
+ * 刷新指定应用商店
+ *
+ * 示例：
+ *  刷新指定应用商店
+ *  url: https://rancher_api_url/v3/projectCatalogs/your_project_id:your_catalog_name?action=refresh
+ *  method:POST
+ *
  */
-def refresh() {
-    println("Refresh catalog templates")
+def refresh(String projectId, String name) {
+    println("---------------【刷新应用商店】开始--------------")
+    Application application = new Application()
+    def response =  application.handleRequest("POST","projectCatalogs/${projectId}:${name}?action=refresh", null)
+    println("---------------【刷新应用商店】结束--------------")
+    return response
 }
