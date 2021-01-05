@@ -1,5 +1,7 @@
 package devops
 
+import sun.security.krb5.Config
+
 import javax.security.auth.login.AppConfigurationEntry
 
 /**
@@ -26,14 +28,20 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
 //        sh('curl -H \'Accept: application/json\' -H \'Content-Type: application/json\' -H \'Authorization: Bearer $TEST_API_TOKEN\' \'$TEST_API_SERVER_URL\'')
 //        sh("curl -H 'Accept: application/json' -H 'Content-Type: application/json' -H 'Authorization: Bearer ${TEST_API_TOKEN}' --data ${requestBody} ${TEST_API_SERVER_URL}")
 
-        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: 'Bearer ${TEST_API_TOKEN}'],
-                                    [maskValue: false, name: 'Content-Type', value: 'application/json'],
-                                    [maskValue: false, name: 'Accept', value: 'application/json']],
-                httpMode: "${httpMode}",
-                consoleLogResponseBody: true,
-                ignoreSslErrors: true,
-                requestBody: "${requestBody}",
-                url: TEST_API_SERVER_URL
+        ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = '$TEST_API_SERVER_URL'
+        ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = '$TEST_API_TOKEN'
+
+        println(ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL)
+        println(ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN)
+
+//        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: 'Bearer ${TEST_API_TOKEN}'],
+//                                    [maskValue: false, name: 'Content-Type', value: 'application/json'],
+//                                    [maskValue: false, name: 'Accept', value: 'application/json']],
+//                httpMode: "${httpMode}",
+//                consoleLogResponseBody: true,
+//                ignoreSslErrors: true,
+//                requestBody: "${requestBody}",
+//                url: TEST_API_SERVER_URL
 //        script {
 //            def rancherApiInfo = ["API_SERVER_URL":API_SERVER_URL, "API_TOKEN":API_TOKEN]
 //            def applicationInfo = [
