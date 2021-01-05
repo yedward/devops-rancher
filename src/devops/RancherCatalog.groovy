@@ -28,6 +28,8 @@ def isExist(String projectId, String name) {
     } catch(Exception e) {
         e.printStackTrace()
         println(response)
+        println(response.status)
+        println(response.content)
     }
 }
 
