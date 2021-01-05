@@ -19,7 +19,8 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             consoleLogResponseBody: true,
             ignoreSslErrors: true,
             requestBody: "${requestBody}",
-            url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
+//            url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
+            url: '$API_SERVER_URL/$httpUrl'
 }
 
 /**
@@ -48,6 +49,9 @@ def initParseParams(Map params) {
 
 /**
  * 部署发布应用
+ *
+ * @param params
+ * @return
  */
 def deploy(Map params) {
     // 第一步，初始化发布配置
