@@ -9,7 +9,6 @@ package devops
  * @return
  */
 def handleRequest(String httpMode, String httpUrl, String requestBody) {
-    //TODO 需要排查一下，为什么response是null
     def response = httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: "Bearer ${ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN}"],
                                 [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                 [maskValue: false, name: 'Accept', value: 'application/json']],
@@ -62,8 +61,9 @@ def deploy(Map params) {
     initParseParams(params)
 
     RancherCatalog rancherCatalog = new RancherCatalog()
+    def resp
     // 第二步，如果还没有添加，则添加chart地址到应用仓库中
-    rancherCatalog.add(
+    resp = rancherCatalog.add(
             ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
             ApplicationConfig.APPLICATION_INFO.CATALOG_NAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_URL,
@@ -71,6 +71,9 @@ def deploy(Map params) {
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_USERNAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_PASSWORD
     )
+    if (resp.status == "409") {
+        println("chart已经存在于应用商店中，无需再次添加")
+    }
     // 第三步，刷新应用仓库，以便获取最新的chart
     rancherCatalog.refresh()
     // 第四步，发布或者更新应用

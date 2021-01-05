@@ -19,18 +19,11 @@ def ls() {
  *
  */
 def isExist(String projectId, String name) {
-    def response
-    try {
-        println("---------------【查找应用商店】开始--------------")
-        Application application = new Application()
-        response =  application.handleRequest("GET","projectCatalogs/${projectId}:${name}", null)
-        println("---------------【查找应用商店】开始--------------")
-    } catch(Exception e) {
-        e.printStackTrace()
-        println(response)
-        println(response.status)
-        println(response.content)
-    }
+    println("---------------【查找应用商店】开始--------------")
+    Application application = new Application()
+    def response =  application.handleRequest("GET","projectCatalogs/${projectId}:${name}", null)
+    println("---------------【查找应用商店】结束--------------")
+    return response
 }
 
 /**
@@ -69,16 +62,9 @@ def add(String projectId, String name, String url, String branch, String usernam
      "password": "${password}"
      }
 """
-    String response
-    try {
-        response = application.handleRequest("POST","projectcatalog", "${requestBody}")
-    } catch (Exception e) {
-        println(response)
-        e.printStackTrace()
-    } finally {
-        println(response)
-        println("---------------【添加Git仓库地址到应用商店】结束--------------")
-    }
+    def response = application.handleRequest("POST","projectcatalog", "${requestBody}")
+    println("---------------【添加Git仓库地址到应用商店】结束--------------")
+    return response
 }
 
 /**
