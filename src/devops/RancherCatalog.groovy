@@ -69,16 +69,14 @@ def add(String projectId, String name, String url, String branch, String usernam
      "password": "${password}"
      }
 """
-    def response
+    String response
     try {
         response = application.handleRequest("POST","projectcatalog", "${requestBody}")
     } catch (Exception e) {
-        println(response.status)
-        println(response.content)
+        println(response)
         e.printStackTrace()
     } finally {
-        println(response.status)
-        println(response.content)
+        println(response)
         println("---------------【添加Git仓库地址到应用商店】结束--------------")
     }
 }
