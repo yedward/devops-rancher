@@ -1,3 +1,4 @@
+import devops.Config
 import devops.RancherApps
 import devops.RancherCatalog
 import devops.Utils
@@ -8,44 +9,13 @@ import devops.Utils
  * @return
  */
 def deployApp(params) {
-    def url = params["url"]
-    def namespace = params["namespace"]
-    RancherCatalog catalog = new RancherCatalog()
-    catalog.add("c-92nlp:p-jr7r6","testtestaaa","http://sdfsdf.github.com/sdfsd.git","master", "adminaa", "sdfsdfsdf")
-
-//    result = httpRequest customHeaders: [[maskValue: true, name: 'Authorization', value: "Bearer token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"],
-//                                         [maskValue: false, name: 'Content-Type', value: 'application/json'],
-//                                         [maskValue: false, name: 'Accept', value: 'application/json']],
-//            httpMode: "POST",
-//            consoleLogResponseBody: true,
-//            ignoreSslErrors: true,
-//            requestBody: "",
-//            url: "https://rancher.yedward.net/v3"
-    println("deploy app from url:${url} to namespace:${namespace} success.")
+    def api_info = ["API_SERVER_URL":"https://rancher.yedward.net/v3", "API_TOKEN":"token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"]
+    def testparams = [:]
+    testparams.put("api_info", api_info)
+    println(testparams.toString())
+//    def url = params["url"]
+//    def namespace = params["namespace"]
+//    RancherCatalog catalog = new RancherCatalog()
+//    catalog.add("c-92nlp:p-jr7r6","testtestaaa","http://sdfsdf.github.com/sdfsd.git","master", "adminaa", "sdfsdfsdf")
+//    println("deploy app from url:${url} to namespace:${namespace} success.")
 }
-
-// project_id
-// project_catalog_name
-// project_catalog_url
-// project_catalog_branch
-// project_catalog_username
-// project_catalog_password
-
-
-// 添加商店：
-// url: https://rancher_url/v3/projectcatalog
-// method:POST
-// request payload：
-// {
-//	"type": "projectcatalog",
-//	"kind": "helm",
-//	"branch": "master",
-//	"projectId": "c-92nlp:p-jr7r6",
-//	"helmVersion": "helm_v3",
-//	"name": "testcharts",
-//	"url": "https://github.com/yedward/testcharts.git",
-//	"username": "admin",
-//	"password": "admin888"
-// }
-
-

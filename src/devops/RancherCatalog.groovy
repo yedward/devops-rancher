@@ -25,12 +25,6 @@ def ls() {
  *  "password": "admin888"
  *  }
  */
-// project_id
-// project_catalog_name
-// project_catalog_url
-// project_catalog_branch
-// project_catalog_username
-// project_catalog_password
 def add(String projectId, String name, String url, String branch, String username, String password) {
     println("---------------【添加Git仓库地址到应用商店】开始--------------")
     Utils helper = new Utils()
