@@ -28,9 +28,22 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
  * @param params
  */
 def initParseParams(Map params) {
+    // 解析Rancher相关配置
     Map rancherApiInfo = params.get("RANCHER_API_INFO")
     ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL = rancherApiInfo.get("API_SERVER_URL")
     ApplicationConfig.RANCHER_SERVER_INFO.API_TOKEN = rancherApiInfo.get("API_TOKEN")
+
+    // 解析应用相关配置
+    Map applicationInfo = params.get("APPLICATION_INFO")
+    ApplicationConfig.APPLICATION_INFO.PROJECT_ID = applicationInfo.get("PROJECT_ID")
+    ApplicationConfig.APPLICATION_INFO.RELEASE_NAME = applicationInfo.get("RELEASE_NAME")
+    ApplicationConfig.APPLICATION_INFO.NAMESPACE_NAME = applicationInfo.get("NAMESPACE_NAME")
+
+    ApplicationConfig.APPLICATION_INFO.CATALOG_NAME = applicationInfo.get("CATALOG_NAME")
+    ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_URL = applicationInfo.get("CATALOG_GIT_URL")
+    ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_BRANCH = applicationInfo.get("CATALOG_GIT_BRANCH")
+    ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_USERNAME = applicationInfo.get("CATALOG_GIT_USERNAME")
+    ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_PASSWORD = applicationInfo.get("CATALOG_GIT_PASSWORD")
 }
 
 /**
