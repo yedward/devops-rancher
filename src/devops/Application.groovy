@@ -59,7 +59,7 @@ def deploy(Map params) {
     rancherCatalog.isExist(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第二步，如果还没有添加，则添加chart地址到应用仓库中
     rancherCatalog.add(
-            new StringBuilder(ApplicationConfig.APPLICATION_INFO.CLUSTER_ID).append(":").append(ApplicationConfig.APPLICATION_INFO.PROJECT_ID),
+            new StringBuilder(ApplicationConfig.APPLICATION_INFO.CLUSTER_ID).append(":").append(ApplicationConfig.APPLICATION_INFO.PROJECT_ID).toString(),
             ApplicationConfig.APPLICATION_INFO.CATALOG_NAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_URL,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_BRANCH,
