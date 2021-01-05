@@ -15,7 +15,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             httpMode: "${httpMode}",
             consoleLogResponseBody: true,
             ignoreSslErrors: true,
-            validResponseCodes: "100:599",
+            validResponseCodes: "100:399,409",
             quiet: false,
             responseHandle: "STRING",
             requestBody: "${requestBody}",
