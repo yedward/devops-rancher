@@ -19,8 +19,7 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
             consoleLogResponseBody: true,
             ignoreSslErrors: true,
             requestBody: "${requestBody}",
-//            url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
-            url: "${API_SERVER_URL}/${httpUrl}"
+            url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
 }
 
 /**
