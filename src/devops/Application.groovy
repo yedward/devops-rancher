@@ -21,15 +21,15 @@ def handleRequest(String httpMode, String httpUrl, String requestBody) {
 //            requestBody: "${requestBody}",
 //            url: "${ApplicationConfig.RANCHER_SERVER_INFO.API_SERVER_URL}/${httpUrl}"
 
-    withCredentials([usernamePassword(credentialsId: 'rancher-server-api', passwordVariable: 'API_TOKEN', usernameVariable: 'API_SERVER_URL')]) {
-        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: 'Bearer $API_TOKEN'],
+    withCredentials([usernamePassword(credentialsId: 'rancher-server-api', passwordVariable: 'TEST_API_TOKEN', usernameVariable: 'TEST_API_SERVER_URL')]) {
+        httpRequest customHeaders: [[maskValue: false, name: 'Authorization', value: 'Bearer $TEST_API_TOKEN'],
                                     [maskValue: false, name: 'Content-Type', value: 'application/json'],
                                     [maskValue: false, name: 'Accept', value: 'application/json']],
                 httpMode: "${httpMode}",
                 consoleLogResponseBody: true,
                 ignoreSslErrors: true,
                 requestBody: "${requestBody}",
-                url: "${API_SERVER_URL}"
+                url: '$TEST_API_SERVER_URL'
 //        script {
 //            def rancherApiInfo = ["API_SERVER_URL":API_SERVER_URL, "API_TOKEN":API_TOKEN]
 //            def applicationInfo = [
