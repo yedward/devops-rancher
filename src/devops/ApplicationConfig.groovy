@@ -15,6 +15,7 @@ class ApplicationConfig {
 
     // Application发布应用相关的信息
     static Map APPLICATION_INFO = [
+            "CLUSTER_PROJECT_ID":"", // 集群ID:项目ID
             "CLUSTER_ID":"", // 应用要发布到的集群的cluster_id
             "PROJECT_ID":"", // 应用要发布到的项目的project_id
             "NAMESPACE_NAME":"", // 应用要发布到的项目下的namespac_name

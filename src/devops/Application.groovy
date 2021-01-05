@@ -34,6 +34,7 @@ def initParseParams(Map params) {
     String[] strArray = applicationInfo.get("PROJECT_ID").split(":")
     ApplicationConfig.APPLICATION_INFO.CLUSTER_ID = strArray[0]
     ApplicationConfig.APPLICATION_INFO.PROJECT_ID = strArray[1]
+    ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID = applicationInfo.get("PROJECT_ID")
     ApplicationConfig.APPLICATION_INFO.RELEASE_NAME = applicationInfo.get("RELEASE_NAME")
     ApplicationConfig.APPLICATION_INFO.NAMESPACE_NAME = applicationInfo.get("NAMESPACE_NAME")
 
@@ -59,7 +60,7 @@ def deploy(Map params) {
     rancherCatalog.isExist(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第二步，如果还没有添加，则添加chart地址到应用仓库中
     rancherCatalog.add(
-            new StringBuilder(ApplicationConfig.APPLICATION_INFO.CLUSTER_ID).append(":").append(ApplicationConfig.APPLICATION_INFO.PROJECT_ID).toString(),
+            ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
             ApplicationConfig.APPLICATION_INFO.CATALOG_NAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_URL,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_BRANCH,
