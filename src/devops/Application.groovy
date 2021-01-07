@@ -49,9 +49,9 @@ def initParseParams(Map params) {
     ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_USERNAME = applicationInfo.get("CATALOG_GIT_USERNAME")
     ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_PASSWORD = applicationInfo.get("CATALOG_GIT_PASSWORD")
 
-    ApplicationConfig.APPLICATION_INFO.CATALOG_APP_NAME = applicationInfo.get("CATALOG_APP_NAME")
-    ApplicationConfig.APPLICATION_INFO.CATALOG_APP_VERSION = applicationInfo.get("CATALOG_APP_VERSION")
-    ApplicationConfig.APPLICATION_INFO.VALUES_YAML = applicationInfo.get("VALUES_YAML")
+    ApplicationConfig.APPLICATION_INFO.RELEASE_APP_NAME = applicationInfo.get("RELEASE_APP_NAME")
+    ApplicationConfig.APPLICATION_INFO.RELEASE_APP_VERSION = applicationInfo.get("RELEASE_APP_VERSION")
+    ApplicationConfig.APPLICATION_INFO.RELEASE_VALUES_YAML = applicationInfo.get("RELEASE_VALUES_YAML")
 }
 
 /**
@@ -81,7 +81,7 @@ def deploy(Map params) {
         println("chart已经存在于应用商店中，无需再次添加")
     }
     // 第三步，刷新应用仓库，以便获取最新的chart
-    // rancherCatalog.refresh(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
+    rancherCatalog.refresh(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第四步，检查状态，等待刷新完成以后，发布或者更新应用
     // TODO
     RancherApps rancherApps = new RancherApps()
@@ -91,9 +91,9 @@ def deploy(Map params) {
             ApplicationConfig.APPLICATION_INFO.RELEASE_NAME,
             ApplicationConfig.APPLICATION_INFO.NAMESPACE_NAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_NAME,
-            ApplicationConfig.APPLICATION_INFO.CATALOG_APP_NAME,
-            ApplicationConfig.APPLICATION_INFO.CATALOG_APP_VERSION,
-            ApplicationConfig.APPLICATION_INFO.VALUES_YAML
+            ApplicationConfig.APPLICATION_INFO.RELEASE_APP_NAME,
+            ApplicationConfig.APPLICATION_INFO.RELEASE_APP_VERSION,
+            ApplicationConfig.APPLICATION_INFO.RELEASE_VALUES_YAML
     )
     // 第五步，检查状态，等待部署成功以后，提示部署成功
     // TODO

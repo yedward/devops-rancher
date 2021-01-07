@@ -15,12 +15,12 @@ package devops
  *  "name": "your_release_name",
  *  "answers": {},
  *  "targetNamespace": "your_namespace",
- *  "externalId": "catalog://?catalog=your_project_id/your_catalog_name&type=projectCatalog&template=your_catalog_app_name&version=your_catalog_app_version",
+ *  "externalId": "catalog://?catalog=your_project_id/your_catalog_name&type=projectCatalog&template=your_release_app_name&version=your_release_app_version",
  *  "projectId": "your_cluster_project_id",
- *  "valuesYaml": "your_values_yaml"
+ *  "valuesYaml": "your_release_values_yaml"
  *  }
  */
-def install(String clusterProjectId, String projectId, String releaseName, String namespaceName, String catalogName, String catalogAppName, String catalogAppVersion, String valuesYaml) {
+def install(String clusterProjectId, String projectId, String releaseName, String namespaceName, String catalogName, String releaseAppName, String releaseAppVersion, String releaseValuesYaml) {
     println("---------------【从应用商店部署应用】开始--------------")
     Application application = new Application()
     String requestBody = """
@@ -32,9 +32,9 @@ def install(String clusterProjectId, String projectId, String releaseName, Strin
      "name": "${releaseName}",
      "answers": {},
      "targetNamespace": "${namespaceName}",
-     "externalId": "catalog://?catalog=${projectId}/${catalogName}&type=projectCatalog&template=${catalogAppName}&version=${catalogAppVersion}",
+     "externalId": "catalog://?catalog=${projectId}/${catalogName}&type=projectCatalog&template=${releaseAppName}&version=${releaseAppVersion}",
      "projectId": "${clusterProjectId}",
-     "valuesYaml": "${valuesYaml}"
+     "valuesYaml": "${releaseValuesYaml}"
      }
 """
     print("${requestBody}")
@@ -51,20 +51,20 @@ def install(String clusterProjectId, String projectId, String releaseName, Strin
  *  method:POST
  *  request payload：
  *  {
- *  "externalId": "catalog://?catalog=your_project_id/your_catalog_name&type=projectCatalog&template=your_catalog_app_name&version=your_catalog_app_version",
+ *  "externalId": "catalog://?catalog=your_project_id/your_catalog_name&type=projectCatalog&template=your_release_app_name&version=your_release_app_version",
  *  "answers": {},
- *  "valuesYaml": "your_values_yaml",
+ *  "valuesYaml": "your_release_values_yaml",
  *  "forceUpgrade": false
  *  }
  */
-def upgrade(String clusterProjectId, String projectId, String releaseName, String catalogName, String catalogAppName, String catalogAppVersion, String valuesYaml) {
+def upgrade(String clusterProjectId, String projectId, String releaseName, String catalogName, String releaseAppName, String releaseAppVersion, String releaseValuesYaml) {
     println("---------------【从应用商店中升级已部署的应用】开始--------------")
     Application application = new Application()
     String requestBody = """
     {
-    "externalId": "catalog://?catalog=${projectId}/${catalogName}&type=projectCatalog&template=${catalogAppName}&version=${catalogAppVersion}",
+    "externalId": "catalog://?catalog=${projectId}/${catalogName}&type=projectCatalog&template=${releaseAppName}&version=${releaseAppVersion}",
     "answers": {},
-    "valuesYaml": "${valuesYaml}",
+    "valuesYaml": "${releaseValuesYaml}",
     "forceUpgrade": false
     }
 """

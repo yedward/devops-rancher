@@ -23,8 +23,8 @@ class ApplicationConfig {
             "CATALOG_GIT_BRANCH":"", // 应用商店配置的托管charts的Git仓库的分支
             "CATALOG_GIT_USERNAME":"", // Git仓库的用户名
             "CATALOG_GIT_PASSWORD":"", // Git仓库的密码
-            "CATALOG_APP_NAME": "", // 应用App Chart名称
-            "CATALOG_APP_VERSION": "", // 应用App Chart Version名称
-            "VALUES_YAML":"" // 部署的Values.Yaml的内容
+            "RELEASE_APP_NAME": "", // 应用发布App Chart名称
+            "RELEASE_APP_VERSION": "", // 应用发布App Chart Version名称
+            "RELEASE_VALUES_YAML":"" // 应用发布Values.Yaml的内容
     ]
 }
