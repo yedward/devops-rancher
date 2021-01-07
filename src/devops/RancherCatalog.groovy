@@ -1,13 +1,6 @@
 package devops
 
 /**
- * List catalogs
- */
-def ls() {
-    println("List catalogs")
-}
-
-/**
  * 根据应用商店名称查询商店信息，可用于判断商店是否已经添加
  *
  * @param name
@@ -65,13 +58,6 @@ def add(String projectId, String name, String url, String branch, String usernam
     def response = application.handleRequest("POST","projectcatalog", "${requestBody}")
     println("---------------【添加Git仓库地址到应用商店】结束--------------")
     return response
-}
-
-/**
- * Delete a catalog
- */
-def delete() {
-    println("Delete a catalog")
 }
 
 /**

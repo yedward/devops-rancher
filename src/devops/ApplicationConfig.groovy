@@ -4,8 +4,6 @@ package devops
  * 全局静态变量
  */
 class ApplicationConfig {
-//    static String API_SERVER_URL = "https://rancher.yedward.net/v3"
-//    static String API_TOKEN = "token-vntwr:8cshhnnjrm4pvn2pm2fjph6mbczdhz2pn2vq27d77fnq2hkvbxmgn6"
 
     // Rancher API相关的配置信息
     static Map RANCHER_SERVER_INFO = [
