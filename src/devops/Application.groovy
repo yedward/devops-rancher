@@ -83,7 +83,7 @@ def deploy(Map params) {
     rancherCatalog.refresh(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第四步，检查状态，等待刷新完成以后，发布或者更新应用
     // TODO
-    Thread.sleep(10*1000)
+    Thread.sleep(15*1000)
     RancherApps rancherApps = new RancherApps()
     resp = rancherApps.install(
             ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
