@@ -84,8 +84,6 @@ def deploy(Map params) {
     // rancherCatalog.refresh(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第四步，检查状态，等待刷新完成以后，发布或者更新应用
     // TODO
-    // 第五步，检查状态，等待部署成功以后，提示部署成功
-    // TODO
     RancherApps rancherApps = new RancherApps()
     rancherApps.install(
             ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
@@ -97,4 +95,7 @@ def deploy(Map params) {
             ApplicationConfig.APPLICATION_INFO.CATALOG_APP_VERSION,
             ApplicationConfig.APPLICATION_INFO.VALUES_YAML
     )
+    // 第五步，检查状态，等待部署成功以后，提示部署成功
+    // TODO
+
 }

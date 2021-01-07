@@ -68,6 +68,7 @@ def upgrade(String clusterProjectId, String projectId, String releaseName, Strin
     "forceUpgrade": false
     }
 """
+    print("${requestBody}")
     def response = application.handleRequest("POST","/project/${clusterProjectId}/apps/${projectId}:${releaseName}?action=upgrade", "${requestBody}")
     println("---------------【从应用商店中升级已部署的应用】结束--------------")
     return response
