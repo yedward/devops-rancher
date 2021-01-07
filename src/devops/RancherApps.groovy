@@ -37,6 +37,7 @@ def install(String clusterProjectId, String projectId, String releaseName, Strin
      "valuesYaml": "${valuesYaml}"
      }
 """
+    print("${requestBody}")
     def response = application.handleRequest("POST","/projects/${clusterProjectId}/app", "${requestBody}")
     println("---------------【从应用商店部署应用】结束--------------")
     return response
