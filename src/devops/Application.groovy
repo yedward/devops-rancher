@@ -48,6 +48,10 @@ def initParseParams(Map params) {
     ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_BRANCH = applicationInfo.get("CATALOG_GIT_BRANCH")
     ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_USERNAME = applicationInfo.get("CATALOG_GIT_USERNAME")
     ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_PASSWORD = applicationInfo.get("CATALOG_GIT_PASSWORD")
+
+    ApplicationConfig.APPLICATION_INFO.CATALOG_APP_NAME = applicationInfo.get("CATALOG_APP_NAME")
+    ApplicationConfig.APPLICATION_INFO.CATALOG_APP_VERSION = applicationInfo.get("CATALOG_APP_VERSION")
+    ApplicationConfig.APPLICATION_INFO.VALUES_YAML = applicationInfo.get("VALUES_YAML")
 }
 
 /**
