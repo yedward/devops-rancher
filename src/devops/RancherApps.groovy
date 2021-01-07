@@ -32,7 +32,7 @@ def install(String clusterProjectId, String projectId, String releaseName, Strin
      "name": "${releaseName}",
      "answers": {},
      "targetNamespace": "${namespaceName}",
-     "externalId": "catalog://?catalog=${projectId}/${catalogName}&type=projectCatalog&template${catalogAppName}&version=${catalogAppVersion}",
+     "externalId": "catalog://?catalog=${projectId}/${catalogName}&type=projectCatalog&template=${catalogAppName}&version=${catalogAppVersion}",
      "projectId": "${clusterProjectId}",
      "valuesYaml": "${valuesYaml}"
      }
