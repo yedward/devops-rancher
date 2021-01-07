@@ -36,10 +36,10 @@ def initParseParams(Map params) {
 
     // 解析应用相关配置
     Map applicationInfo = params.get("APPLICATION_INFO")
-    String[] strArray = applicationInfo.get("PROJECT_ID").split(":")
+    ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID = applicationInfo.get("CLUSTER_PROJECT_ID")
+    String[] strArray = applicationInfo.get("CLUSTER_PROJECT_ID").split(":")
     ApplicationConfig.APPLICATION_INFO.CLUSTER_ID = strArray[0]
     ApplicationConfig.APPLICATION_INFO.PROJECT_ID = strArray[1]
-    ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID = applicationInfo.get("PROJECT_ID")
     ApplicationConfig.APPLICATION_INFO.RELEASE_NAME = applicationInfo.get("RELEASE_NAME")
     ApplicationConfig.APPLICATION_INFO.NAMESPACE_NAME = applicationInfo.get("NAMESPACE_NAME")
 
@@ -80,7 +80,17 @@ def deploy(Map params) {
     rancherCatalog.refresh(ApplicationConfig.APPLICATION_INFO.PROJECT_ID,ApplicationConfig.APPLICATION_INFO.CATALOG_NAME)
     // 第四步，检查状态，等待刷新完成以后，发布或者更新应用
     // TODO
-    RancherApps rancherApps = new RancherApps()
-    rancherApps.install()
     // 第五步，检查状态，等待部署成功以后，提示部署成功
+    // TODO
+    RancherApps rancherApps = new RancherApps()
+    rancherApps.install(
+            ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
+            ApplicationConfig.APPLICATION_INFO.PROJECT_ID,
+            ApplicationConfig.APPLICATION_INFO.RELEASE_NAME,
+            ApplicationConfig.APPLICATION_INFO.NAMESPACE_NAME,
+            ApplicationConfig.APPLICATION_INFO.CATALOG_NAME,
+            ApplicationConfig.APPLICATION_INFO.CATALOG_APP_NAME,
+            ApplicationConfig.APPLICATION_INFO.CATALOG_APP_VERSION,
+            ApplicationConfig.APPLICATION_INFO.VALUES_YAML
+    )
 }
