@@ -76,7 +76,7 @@ def deploy(Map params) {
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_USERNAME,
             ApplicationConfig.APPLICATION_INFO.CATALOG_GIT_PASSWORD
     )
-    if (resp.status == "409") {
+    if (resp.status.toString().equals("409")) {
         println("chart已经存在于应用商店中，无需再次添加")
     }
     // 第三步，刷新应用仓库，以便获取最新的chart
@@ -94,7 +94,7 @@ def deploy(Map params) {
             ApplicationConfig.APPLICATION_INFO.RELEASE_APP_VERSION,
             ApplicationConfig.APPLICATION_INFO.RELEASE_VALUES_YAML
     )
-    if (resp.status == "409") {
+    if (resp.status.toString().equals("409")) {
         println("该应用已经存在，下面执行应用升级处理")
         rancherApps.upgrade(
                 ApplicationConfig.APPLICATION_INFO.CLUSTER_PROJECT_ID,
